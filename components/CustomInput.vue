@@ -11,6 +11,8 @@
       :placeholder="props.placeholder"
       :required="true"
       class="border border-solid border-theme-fill-clr text-theme-text-clr rounded-lg px-5 py-3 w-full outline-none focus-visible:border-2"
+      :value="props.modelValue"
+      @input="$emit('update:modelValue', ($event.target as HTMLInputElement)?.value)"
     >
     <button
       v-if="props.type === 'password'"
@@ -69,9 +71,12 @@ const props = defineProps<{
   id: string,
   type: string,
   name: string,
+  modelValue?: string,
   placeholder?: string
   required?: 'true' | 'false'
 }>();
+
+defineEmits(['update:modelValue'])
 
 const inputType = ref(props.type)
 

@@ -4,6 +4,7 @@
       type="checkbox"
       :name="props.name"
       :id="props.id"
+      :required="props.required"
       class="w-5 h-5 text-theme-checkbox-clr bg-gray-100 border-gray-300 rounded-lg focus:ring-theme-fill-clr focus:ring-2"
     >
     <label

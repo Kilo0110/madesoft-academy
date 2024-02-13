@@ -13,6 +13,7 @@
         of Technology</h1>
       <ProgressIndicator :status-level="1" />
       <form
+        @submit.prevent="handleSubmit"
         action=""
         class="signup-form flex flex-col gap-3 relative"
       >
@@ -24,6 +25,7 @@
             id="first_name"
             required="true"
             placeholder="Enter your first name"
+            v-model='firstName'
           />
 
           <CustomInput
@@ -33,6 +35,7 @@
             id="last_name"
             required="true"
             placeholder="Enter your last name"
+            v-model='lastName'
           />
         </div>
         <CustomInput
@@ -42,6 +45,7 @@
           id="email"
           required="true"
           placeholder="Enter your email"
+          v-model='email'
         />
         <CustomInput
           name="password"
@@ -50,6 +54,7 @@
           id="password"
           required="true"
           placeholder="Enter your password"
+          v-model='password'
         />
         <CustomCheckbox
           name="privacy_agreement"
@@ -69,12 +74,57 @@
       </form>
     </div>
   </div>
+  <div
+    class="loading-overlay fixed top-0 left-0 w-[100vw] h-[100vh] bg-black opacity-40 flex justify-center items-center"
+    v-if="showLoader"
+  >
+    <component :is="ScaleLoader" />
+  </div>
 </template>
 
 <script setup lang="ts">
 useHead({
   title: 'MadeSoft Academy Technologies || Sign Up'
 })
+
+const ScaleLoader = resolveComponent('ScaleLoader');
+const showLoader = ref(false);
+
+const firstName = ref('')
+const lastName = ref('')
+const email = ref('')
+const password = ref('')
+
+const apiEndpoint = 'https://live.api.madesoftacademy.com/v1/auth/register'
+
+const handleSubmit = async () => {
+  showLoader.value = true
+
+  try {
+    const { data, error } = await useFetch<{ data: string, status: number }>(apiEndpoint, {
+      method: 'POST',
+      body: {
+        first_name: firstName.value,
+        last_name: lastName.value,
+        email: email.value,
+        password: password.value
+      }
+    })
+
+    if (error.value) {
+      showLoader.value = false
+      alert('An error occurred')
+    }
+
+    if (data.value) {
+      showLoader.value = false
+      navigateTo('/profile/complete')
+    }
+  } catch (error) {
+    showLoader.value = false
+    alert('An error occurred')
+  }
+}
 </script>
 
 <style lang="scss" scoped>
