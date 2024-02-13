@@ -8,6 +8,9 @@ module.exports = {
     './nuxt.config.{js,ts}',
   ],
   theme: {
+    fontFamily: {
+      'display-font': 'Poppins, system-ui, sans-serif',
+    },
     extend: {
       colors: {
         'theme-icon-clr': '#9A9AB0',
