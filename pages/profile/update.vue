@@ -1,56 +1,59 @@
 <template>
-  <NuxtLayout
-    name="auth-layout"
-    imgSrc="/assets/img/3 51.png"
-  >
-    <div class="progress-indicator-container flex gap-10">
-      <span class="span progress-indicator"></span>
-      <span class="span progress-indicator"></span>
-      <span class="span progress-indicator"></span>
+  <div class="auth-layout flex flex-col min-h-[80vh] md:flex-row">
+    <div class="img-container w-full md:w-[45%]">
+      <img
+        src="/assets/img/3 51.png"
+        alt=""
+        class="h-full object-cover w-full"
+      >
     </div>
-    <h1 class="main-heading">Complete your personal profile
-      <span class="font-normal text-sm">We'd love to know more about you</span>
-    </h1>
+    <div class="content w-full flex flex-col justify-center px-10 py-10 md:w-[55%] lg:px-20">
+      <h1 class="main-heading">Complete your personal profile
+        <span class="font-normal text-sm">We'd love to know more about you</span>
+      </h1>
 
-    <form
-      action=""
-      class="update-profile-form flex flex-col gap-3"
-    >
-      <div class="profile-image-container">
-        <CustomFileInput
-          type="file"
-          id="photoUrl"
-          name="photoUrl"
-          label="Select your personal profile picture"
-          placeholder=""
+      <form
+        action=""
+        class="update-profile-form flex flex-col gap-3"
+      >
+        <div class="profile-image-container">
+          <CustomFileInput
+            type="file"
+            id="photoUrl"
+            name="photoUrl"
+            label="Select your personal profile picture"
+            placeholder=""
+            required="true"
+            accept="image/*"
+          />
+        </div>
+        <CustomInput
+          name="about"
+          label="About"
+          type="text"
+          id="about"
           required="true"
-          accept="image/*"
+          placeholder="Tell us about yourself"
         />
-      </div>
-      <CustomInput
-        name="about"
-        label="About"
-        type="text"
-        id="about"
-        required="true"
-        placeholder="Tell us about yourself"
-      />
-      <CustomInput
-        name="specialties"
-        label="Your Specialties"
-        type="text"
-        id="specialties"
-        required="true"
-        placeholder="What are your specialties"
-      />
-
-      <CallToAction text="Next" />
-
-    </form>
-  </NuxtLayout>
+        <CustomInput
+          name="specialties"
+          label="Your Specialties"
+          type="text"
+          id="specialties"
+          required="true"
+          placeholder="What are your specialties"
+        />
+        <CallToAction text="Next" />
+      </form>
+    </div>
+  </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+useHead({
+  title: 'MadeSoft Academy Technologies || Update Profile'
+})
+</script>
 
 <style lang="scss" scoped>
 .progress-indicator {
