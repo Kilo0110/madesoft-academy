@@ -1,6 +1,6 @@
-# Nuxt 3 Minimal Starter
+# MadeSoft Frontend Developer Position
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Authentication page for MadeSoft Academy designed with Nuxt 3, TailwindCSS and TypeScript.
 
 ## Setup
 
@@ -72,4 +72,6 @@ yarn preview
 bun run preview
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+## Authentication Flow
+
+After signing up, you are redirected to the profile completion page. Successful login redirects you to the profile welcome page.
