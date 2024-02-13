@@ -7,14 +7,15 @@
         class="h-full object-cover w-full"
       >
     </div>
-    <div class="content w-full flex flex-col justify-center px-10 py-10 md:w-[55%] lg:px-20">
+    <div class="content w-full flex flex-col px-10 pt-20 md:w-[55%] lg:px-20">
+      <ProgressIndicator :status-level="2" />
       <h1 class="main-heading">Complete your personal profile
-        <span class="font-normal text-sm">We'd love to know more about you</span>
       </h1>
+      <span class="font-normal text-sm text-theme-icon-clr">We'd love to know more about you</span>
 
       <form
         action=""
-        class="update-profile-form flex flex-col gap-3"
+        class="update-profile-form flex flex-col gap-3 pt-5"
       >
         <div class="profile-image-container">
           <CustomFileInput
@@ -56,45 +57,7 @@ useHead({
 </script>
 
 <style lang="scss" scoped>
-.progress-indicator {
-  @apply border-2 border-theme-checkbox-clr;
-
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background-color: #fff;
-  position: relative;
-
-  &:not(:last-of-type)::before {
-    @apply bg-theme-checkbox-clr;
-
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-  }
-
-  &:not(:last-of-type)::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 100%;
-
-    width: 43px;
-    height: 2px;
-
-    &:first-of-type {
-      @apply bg-theme-checkbox-clr;
-    }
-
-    &:nth-of-type(2) {
-      @apply bg-theme-icon-clr;
-    }
-  }
+.main-heading {
+  @apply pb-0;
 }
 </style>

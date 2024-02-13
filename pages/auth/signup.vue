@@ -7,10 +7,11 @@
         class="h-full object-cover w-full"
       >
     </div>
-    <div class="content w-full flex flex-col justify-center px-10 py-10 md:w-[55%] lg:px-20">
-      <h1 class="main-heading">Sign up to
+    <div class="content w-full flex flex-col px-10 pt-20 md:w-[55%] lg:px-20">
+      <h1 class="main-heading max-w-[18ch] text-balance mb-5">Sign up to
         Madesoft Academy
         of Technology</h1>
+      <ProgressIndicator :status-level="1" />
       <form
         action=""
         class="signup-form flex flex-col gap-3 relative"
@@ -59,13 +60,12 @@
 
         <div class="call-to-action-container flex flex-col xl:flex-row xl:justify-between xl:items-center">
           <CallToAction text="Create Account" />
-          <p class="">Already have an account? <NuxtLink
+          <p class="text-theme-icon-clr text-sm">Already have an account? <NuxtLink
               class="text-theme-fill-clr font-bold"
               to="/auth/login"
             >Sign In Now</NuxtLink>
           </p>
         </div>
-
       </form>
     </div>
   </div>
